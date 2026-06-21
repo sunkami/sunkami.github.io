@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Иван Аришин | Портфолио</title>
     <style>
+        /* Обновленная современная цветовая палитра: глубокий изумрудно-тиловый оттенок вместо синего */
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
+            --bg-color: #0b0f19;
+            --card-bg: #151c2c;
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --accent-color: #38bdf8;
-            --border-color: #334155;
+            --accent-color: #0ea5e9; /* Светло-голубой акцент для ссылок */
+            --accent-preset: #10b981; /* Изумрудно-зеленый бренд-цвет */
+            --border-color: #1e293b;
         }
 
         * {
@@ -34,27 +36,31 @@
             padding: 40px 20px;
         }
 
-        /* Блок О себе */
+        /* Обновленный блок "О себе": убрали рамку, добавили мягкое свечение слева */
         .profile-section {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-left: 6px solid var(--accent-preset);
+            border-radius: 4px 16px 16px 4px;
             padding: 40px;
             margin-bottom: 50px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .profile-section h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--text-main);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .profile-section .status {
-            font-size: 1.2rem;
-            color: var(--accent-color);
+            font-size: 1.15rem;
+            color: var(--accent-preset);
             font-weight: 600;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .profile-section .bio {
@@ -63,13 +69,28 @@
             max-width: 800px;
         }
 
-        /* Заголовки секций */
+        .profile-section .bio strong {
+            color: var(--accent-preset);
+        }
+
+        /* Заголовки секций с обновленным стилем */
         h2 {
             font-size: 1.8rem;
             margin-bottom: 25px;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 15px;
+            display: inline-block;
+            position: relative;
             color: var(--text-main);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40px;
+            height: 4px;
+            background-color: var(--accent-preset);
+            border-radius: 2px;
         }
 
         /* Табличный список достижений */
@@ -79,7 +100,8 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            margin-top: 15px;
         }
 
         table {
@@ -90,17 +112,17 @@
         }
 
         th {
-            background-color: #111827;
+            background-color: #0f1422;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 16px 20px;
+            letter-spacing: 0.08em;
+            padding: 18px 24px;
             border-bottom: 1px solid var(--border-color);
         }
 
         td {
-            padding: 20px;
+            padding: 22px 24px;
             border-bottom: 1px solid var(--border-color);
             vertical-align: middle;
             color: #cbd5e1;
@@ -112,7 +134,7 @@
         }
 
         tr:hover td {
-            background-color: #243249;
+            background-color: #1a2336;
         }
 
         /* Стили для миниатюр */
@@ -120,16 +142,17 @@
             width: 80px;
             height: 60px;
             object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid #475569;
-            background-color: #0f172a;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background-color: #0b0f19;
             display: block;
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
         }
 
         .doc-link:hover .doc-preview {
-            transform: scale(1.05);
-            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            border-color: var(--accent-preset);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
 
         /* Мягкие ссылки */
@@ -137,41 +160,56 @@
             color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.15s ease;
         }
 
         .table-link:hover {
-            color: var(--accent-color);
+            color: var(--accent-preset);
         }
 
         .issuer {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
         .year {
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--accent-preset);
+            background-color: rgba(16, 185, 129, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
         }
 
         /* Подвал */
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 30px;
+            margin-top: 80px;
+            padding-top: 40px;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
+        .contacts {
+            margin-top: 15px;
+        }
+
         .contacts a {
-            color: var(--accent-color);
+            color: var(--text-main);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
+            font-weight: 500;
+            transition: color 0.15s ease;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background-color: #1a2336;
         }
 
         .contacts a:hover {
-            text-decoration: underline;
+            color: var(--bg-color);
+            background-color: var(--accent-preset);
         }
     </style>
 </head>
@@ -196,7 +234,7 @@
                             <th style="width: 120px;">Документ</th>
                             <th>Название и Описание</th>
                             <th>Организация</th>
-                            <th style="width: 100px; text-align: center;">Год</th>
+                            <th style="width: 110px; text-align: center;">Год</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -204,7 +242,7 @@
                         <tr>
                             <td>
                                 <a href="stepik-certificate-arishin-ivan.pdf" target="_blank" class="doc-link">
-                                    <img src="stepik-certificate-arishin-ivan.pdf" alt="Тренажер по SQL" class="doc-preview" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'60\' viewBox=\'0 0 80 60\'><rect width=\'80\' height=\'60\' fill=\'%231e293b\'/><text x=\'50%\' y=\'55%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2394a3b8\' font-size=\'10\' font-family=\'sans-serif\'>PDF</text></svg>';">
+                                    <img src="stepik-certificate-arishin-ivan.pdf" alt="Тренажер по SQL" class="doc-preview" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'60\' viewBox=\'0 0 80 60\'><rect width=\'80\' height=\'60\' fill=\'%23151c2c\'/><text x=\'50%\' y=\'55%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2310b981\' font-size=\'11\' font-weight=\'bold\' font-family=\'sans-serif\'>PDF</text></svg>';">
                                 </a>
                             </td>
                             <td>
@@ -218,7 +256,7 @@
                         <tr>
                             <td>
                                 <a href="Certificate_SQL-Island.pdf" target="_blank" class="doc-link">
-                                    <img src="Certificate_SQL-Island.pdf" alt="SQL Island" class="doc-preview" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'60\' viewBox=\'0 0 80 60\'><rect width=\'80\' height=\'60\' fill=\'%231e293b\'/><text x=\'50%\' y=\'55%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2394a3b8\' font-size=\'10\' font-family=\'sans-serif\'>PDF</text></svg>';">
+                                    <img src="Certificate_SQL-Island.pdf" alt="SQL Island" class="doc-preview" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'60\' viewBox=\'0 0 80 60\'><rect width=\'80\' height=\'60\' fill=\'%23151c2c\'/><text x=\'50%\' y=\'55%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2310b981\' font-size=\'11\' font-weight=\'bold\' font-family=\'sans-serif\'>PDF</text></svg>';">
                                 </a>
                             </td>
                             <td>
@@ -232,7 +270,7 @@
                         <tr>
                             <td>
                                 <a href="Диплом участника «ДИКТАНТ ПОБЕДЫ – 2024».jpg" target="_blank" class="doc-link">
-                                    <img src="Диплом участника «ДИКТАНТ ПОБЕДЫ – 2024».jpg" alt="Диктант Победы" class="doc-preview" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'60\' viewBox=\'0 0 80 60\'><rect width=\'80\' height=\'60\' fill=\'%231e293b\'/><text x=\'50%\' y=\'55%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2394a3b8\' font-size=\'10\' font-family=\'sans-serif\'>JPG</text></svg>';">
+                                    <img src="Диплом участника «ДИКТАНТ ПОБЕДЫ – 2024».jpg" alt="Диктант Победы" class="doc-preview" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'60\' viewBox=\'0 0 80 60\'><rect width=\'80\' height=\'60\' fill=\'%23151c2c\'/><text x=\'50%\' y=\'55%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2310b981\' font-size=\'11\' font-weight=\'bold\' font-family=\'sans-serif\'>JPG</text></svg>';">
                                 </a>
                             </td>
                             <td>
@@ -251,11 +289,11 @@
         <footer>
             <p>Связаться со мной:</p>
             <div class="contacts">
-                <a href="mailto:ivan.arishin@example.com">Email</a> • 
-                <a href="https://t.me/your_telegram_username" target="_blank">Telegram</a> • 
-                <a href="https://github.com/your_github_username" target="_blank">GitHub</a>
+                <a href="mailto:ivan.arishin@example.com">Email</a>
+                <a href="https://t.me/your_telegram_username" target="_blank">Telegram</a>
+                <a href="https://github.com/sunkami" target="_blank">GitHub</a>
             </div>
-            <p style="margin-top: 15px; font-size: 0.8rem; color: #475569;">&copy; 2026 Иван Аришин. Все права защищены.</p>
+            <p style="margin-top: 25px; font-size: 0.8rem; color: #475569;">&copy; 2026 Иван Аришин. Все права защищены.</p>
         </footer>
     </div>
 
